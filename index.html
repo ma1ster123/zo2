@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Heart</title>
-    <link rel="stylesheet" href="neon_heart.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Neon Heart</title>
+<style>
+  html,body{height:100%;margin:0;background:#070007;overflow:hidden;font-family:Arial, Helvetica, sans-serif}
+  #canvas{display:block;width:100%;height:100%}
+  .text{
+    position:absolute;
+    left:50%;
+    top:60%;
+    transform:translate(-50%,-50%);
+    font-size:72px;
+    color:#ff66cc;
+    pointer-events:none;
+    mix-blend-mode:screen;
+    text-shadow:
+      0 0 8px rgba(255,102,204,0.9),
+      0 0 24px rgba(255,102,204,0.7),
+      0 0 48px rgba(255,102,204,0.5);
+  }
+</style>
 </head>
 <body>
-    <p class="text">love</p>
-    <canvas id="canvas"></canvas>
-    <script src="neon_heart.js"></script>
+  <canvas id="canvas"></canvas>
+  <div class="text">love</div>
+  <script src="neon_heart.js"></script>
 </body>
 </html>
