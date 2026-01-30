@@ -3,204 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Уяви що це ми ❤️</title>
+    <title>Уяви що це ми</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- ЗАГАЛЬНИЙ ДИЗАЙН --- */
-        :root {
-            /* Колірна палітра */
-            --primary-pink: #ff4d6d;
-            --deep-purple: #4a1d49;
-            --soft-peach: #ffccd5;
-        }
-
+        /* --- СТИЛІ --- */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
             font-family: 'Montserrat', sans-serif;
-            /* Статичний, глибокий романтичний градієнт */
-            background: linear-gradient(135deg, var(--deep-purple) 0%, #c75b7a 50%, var(--soft-peach) 100%);
+            /* Статичний романтичний градієнт */
+            background: linear-gradient(180deg, #2a0845 0%, #6441A5 50%, #feada6 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
-        /* Додаємо легку текстуру шуму для "дорогого" вигляду */
-        body::after {
+        /* Текстура шуму для глибини */
+        body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
+            z-index: 1;
         }
 
-        /* Контейнер для початкового екрану */
-        .intro-container {
-            position: absolute;
-            text-align: center;
+        /* Контейнер для центрування */
+        .container {
+            position: relative;
             z-index: 10;
-            transition: all 0.8s ease-in-out;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px; /* Відступ між текстом і відео */
         }
 
-        /* Якщо додати цей клас, вступ зникне */
-        .intro-container.fade-out {
-            opacity: 0;
-            transform: scale(1.1);
-            pointer-events: none;
-        }
-
-        /* --- ТИПОГРАФІКА --- */
+        /* Напис */
         h1 {
             font-family: 'Pacifico', cursive;
             color: #fff;
-            font-size: 4rem; /* Великий розмір */
-            margin-bottom: 50px;
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             font-weight: normal;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* Обгортка для відео (робить його адаптивним) */
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Пропорції відео */
+            background: #000;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 1.5s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Анімації появи */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Адаптив для мобільних */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-        }
-
-        /* --- КНОПКА-СЕРЦЕ --- */
-        .heart-btn {
-            display: inline-block;
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background: var(--primary-pink);
-            border-radius: 50%;
-            box-shadow: 0 0 0 rgba(255, 77, 109, 0.4);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* Анімація пульсації */
-            animation: pulse 2s infinite;
-        }
-
-        .heart-btn:hover {
-            transform: scale(1.1);
-            background: #ff3357;
-        }
-
-        .heart-icon {
-            font-size: 50px;
-            color: white;
-            /* Невелике зміщення для візуального балансу */
-            transform: translateY(2px) translateX(4px); 
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
-            70% { box-shadow: 0 0 0 30px rgba(255, 77, 109, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
-        }
-
-        /* --- КОНТЕЙНЕР ВІДЕО --- */
-        .video-wrapper {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90%;
-            max-width: 960px;
-            /* Співвідношення сторін 16:9 для контейнера */
-            aspect-ratio: 16 / 9;
-            background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border-radius: 20px;
-            overflow: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.8s ease-in-out;
-            z-index: 5;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* Коли відео активне */
-        .video-wrapper.active {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            pointer-events: all;
-        }
-
-        /* Сам плеєр YouTube */
-        #youtube-player {
-            width: 100%;
-            height: 100%;
-            display: block;
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="intro-container" id="intro">
+    <div class="container">
         <h1>Уяви що це ми...</h1>
-        <div class="heart-btn" id="play-button">
-            <span class="heart-icon">▶</span>
+        
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/ZjXfbpoRRJs?si=xqrcQZBG5WYGqdNg" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 
-    <div class="video-wrapper" id="video-container">
-        <div id="youtube-player"></div>
-    </div>
-
-
-    <script>
-        // --- ЛОГІКА YOUTUBE API ---
-        
-        // 1. Завантажуємо YouTube IFrame Player API асинхронно
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        const intro = document.getElementById('intro');
-        const videoContainer = document.getElementById('video-container');
-        const playButton = document.getElementById('play-button');
-
-        // 2. Ця функція створить плеєр після завантаження API
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                height: '100%',
-                width: '100%',
-                // ID твого відео: ZjXfbpoRRJs
-                videoId: 'ZjXfbpoRRJs', 
-                playerVars: {
-                    'autoplay': 0,       // Не запускати автоматично при завантаженні сторінки
-                    'controls': 1,       // Показати контролери плеєра
-                    'rel': 0,            // Не показувати схожі відео в кінці
-                    'showinfo': 0,       // Сховати заголовок відео
-                    'modestbranding': 1  // Мінімальний логотип YouTube
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        // 3. Коли плеєр готовий, додаємо обробник кліку на нашу кнопку
-        function onPlayerReady(event) {
-            playButton.addEventListener('click', function() {
-                // Ховаємо заголовок і кнопку (плавно)
-                intro.classList.add('fade-out');
-                
-                // Показуємо контейнер з відео (плавно)
-                videoContainer.classList.add('active');
-
-                // Запускаємо відео програмно
-                // (Важливо: це працює тільки всередині події кліку користувача)
-                player.playVideo();
-            });
-        }
-    </script>
 </body>
 </html>
