@@ -6,13 +6,11 @@
     <title>Уяви що це ми</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- СТИЛІ --- */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Montserrat', sans-serif;
-            /* Статичний романтичний градієнт */
             background: linear-gradient(180deg, #2a0845 0%, #6441A5 50%, #feada6 100%);
             display: flex;
             flex-direction: column;
@@ -21,7 +19,6 @@
             overflow: hidden;
         }
 
-        /* Текстура шуму для глибини */
         body::before {
             content: "";
             position: absolute;
@@ -31,7 +28,6 @@
             z-index: 1;
         }
 
-        /* Контейнер для центрування */
         .container {
             position: relative;
             z-index: 10;
@@ -41,10 +37,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px; /* Відступ між текстом і відео */
+            gap: 30px;
         }
 
-        /* Напис */
         h1 {
             font-family: 'Pacifico', cursive;
             color: #fff;
@@ -56,10 +51,9 @@
             animation: fadeIn 2s ease;
         }
 
-        /* Обгортка для відео (робить його адаптивним) */
         .video-wrapper {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Пропорції відео */
+            aspect-ratio: 16 / 9;
             background: #000;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
@@ -74,7 +68,6 @@
             border: none;
         }
 
-        /* Анімації появи */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -85,7 +78,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Адаптив для мобільних */
         @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
         }
