@@ -22,21 +22,18 @@
         body::before {
             content: "";
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
-            z-index: 1;
         }
 
         .container {
             position: relative;
-            z-index: 10;
             width: 90%;
             max-width: 800px;
             text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 30px;
         }
 
@@ -45,37 +42,23 @@
             color: #fff;
             font-size: 3.5rem;
             margin: 0;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            font-weight: normal;
-            letter-spacing: 1px;
-            animation: fadeIn 2s ease;
+            text-shadow: 0 4px 20px rgba(0,0,0,.5);
         }
 
         .video-wrapper {
             width: 100%;
             aspect-ratio: 16 / 9;
             background: #000;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: slideUp 1.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,.6);
         }
 
-        iframe {
+        video {
             width: 100%;
             height: 100%;
-            border: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            display: block;
+            background: #000;
         }
 
         @media (max-width: 600px) {
@@ -85,15 +68,15 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Уяви що це ми...</h1>
-        
-        <div class="video-wrapper">
-            <<video controls>
-                <source src="Мультфільм «Зоотрополіс 2» 2025 українською онлайн - Google Chrome 2026-02-05 21-17-06 (1).mp4" type="video/mp4">
-            </video>
-        </div>
+<div class="container">
+    <h1>Уяви що це ми...</h1>
+
+    <div class="video-wrapper">
+        <video controls preload="metadata">
+            <source src="Мультфільм «Зоотрополіс 2» 2025 українською онлайн - Google Chrome 2026-02-05 21-17-06 (1).mp4" type="video/mp4">
+        </video>
     </div>
+</div>
 
 </body>
 </html>
